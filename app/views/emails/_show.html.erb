@@ -1,0 +1,14 @@
+<div class="container" id="test">
+
+<br>
+
+<div class="card text-center">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @email.object  %></h5>
+
+    <p class="card-text"><%= @email.body  %></p>
+    <%= link_to "Delete", email_path(email), method: :delete,  remote: true %>
+   
+  </div>

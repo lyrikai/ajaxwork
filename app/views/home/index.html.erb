@@ -5,13 +5,22 @@
   <% @categories.each do  |category|%>
   <li><%= category.title  %></li>
   <div class="card">
-    <ul>
+    <ul id="listt">
       <% category.tasks.each do |task|  %>
       <li>
+       <%= task.id  %>
         <%= task.title  %>
+        
         <% unless task.deadline.nil? %>
           , to read: <%= task.deadline.strftime('%D')  %>
         <% end %>
+        <% pommme = true %>
+<%= check_box_tag :task, 1, false , data: { remote: true, url: task_path(task), params: {status: true, title: "ok" }.to_param, method: "put" }%>
+       
+           <%= task.status  %>
+        
+        <%= link_to "Delete", task_path(task), method: :delete, remote: true %>
+
       </li>
       <% end %>
     </ul>

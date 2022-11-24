@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+
+    <div class="card-header">
+        Object : <%= email.object%> <%= email.id%>
+    </div>
+
+    <div class="card-header">
+                         
+        <%= link_to "Voir", email_path(email.id),  remote: true%>
+        <%= link_to "Delete", email_path(email), method: :delete,  remote: true %>
+                         
+    </div>
+    
+</div>

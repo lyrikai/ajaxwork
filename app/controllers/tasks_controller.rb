@@ -8,11 +8,13 @@ before_action :authenticate_user!
     @task = Task.new(task_params)
     @category = Category.find(category_params)
     @task.category = @category
+
     if @task.save
-      redirect_to root_path
-      flash[:notice] = "Task created"
+      respond_to do |format|
+        format.html { redirect_to books_path }
+        format.js { }
+      end
     else
-      redirect_to root_path
       flash[:notice] = "Please try again"
     end
   end
@@ -25,7 +27,24 @@ before_action :authenticate_user!
 
   def update
     @task = Task.find(params[:id])
-    @task.update(task_params)
+    if params[:status] == "true"
+      params[:status] = true
+    end
+    ok = task_params
+    puts "-" * 60
+    puts params
+    puts "-" * 60
+    puts task_params
+    puts "-" * 60
+    puts ok
+    ok.each do |i|
+      puts i
+    end
+    puts "-" * 60
+    
+    puts "-" * 60
+    
+    @task.update(ok)
     redirect_to tasks_path
     flash[:notice] = "Task edited"
   end

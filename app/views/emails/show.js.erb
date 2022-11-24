@@ -1,0 +1,9 @@
+console.log("ok2");
+    var div = document.getElementById("unique");
+ while(div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
+
+document.getElementById("unique").insertAdjacentHTML("beforeend", "<%= j render 'show', email: @email %>")
+
+

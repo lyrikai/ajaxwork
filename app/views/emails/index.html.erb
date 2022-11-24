@@ -1,0 +1,57 @@
+<section>
+
+    <div id="unique-mail">
+     <h2>Email sélectionné</h2>
+        <div id="unique">
+
+        </div>
+        
+
+    </div>
+
+    <div id="list-mail" > 
+
+        <h2>Liste des emails  <%= @email.count %></h2>
+
+         <%= form_tag(emails_path, method: "post", class: "form",  id: "ok", remote: true)  do %>
+              <div class="text-center">
+                  <%= submit_tag("Crée un email", class: "btn btn-start-order") %>
+              </div>
+          <%end%>
+
+        <div id="list">
+
+            <% j = 0 %>
+
+            <% @email.reverse_each do |i|%>
+
+                <% if j < 100000 %>
+                    <div class="card" style="width: 18rem;">
+
+                        <div class="card-header">
+                            Object : <%= i.object%> <%= i.id%>
+                        </div>
+
+                         <div class="card-header">
+                         
+                          <%= link_to "Voir", email_path(i.id),  remote: true%>
+                          <%= link_to "Delete", email_path(i), method: :delete,  remote: true %>
+                         
+                        </div>
+
+                    </div>
+                <% end%>
+
+                <% j = j + 1 %>
+
+            <%end%>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+

@@ -9,6 +9,7 @@
     <%= label_tag("When is it due for ?") %>
     <%= date_field_tag(:deadline, @task.deadline)  %>
   </div>
+
     <%= submit_tag("Edit task", class: "btn btn-info") %>
 <% end %>
 <%= link_to "Delete this task", task_path(@task), method: :delete, class: "btn btn-danger" %>
